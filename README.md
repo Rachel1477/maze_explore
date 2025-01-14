@@ -1,26 +1,55 @@
-# 强化学习求解迷宫问题
-## 核心代码
-- maze.py: 迷宫类的实现，迷宫信息用一个二维数组表示，数组中的每个数代表一个方格，数字值代表方格类型（如0表示墙, 2表示陷阱, 3表示火）。
-- train_qtable.py: Q表类的实现，Q表类有Q值的存储，决策的进行，Q表的学习等功能函数，进行预测和学习时会与迷宫（“环境”）进行交互，对其输入动作，得到反馈。
-- train_network.py: 监督学习模型的学习，预测等实现。
+<<<<<<< HEAD
+# maze_explore
+=======
+这是一个用于解决二维迷宫寻路的小项目，情境为给定二维迷宫，用不同的算法找到最优路径。本项目使用的算法包括BFS，dijkstra，Q_learning，可视化界面使用的是pyQT制作。
+
+### 运行环境
+python 3.6, pyqt 5.13.1, matplotlib 3.0.2, numpy 1.15.2, Pyinstaller 3.5
+
+# 依赖构建
+本项目采用python>=3.6，请确保你的python版本高于它
+项目包含一个requirement.txt，其中有运行这个项目所用到的第三方库，你可以通过以下方式安装：
+
+### pip
+```
+pip install -r requirement.txt
+```
+### conda
+```
+conda install --file requirements.txt
+
+```
+>如果不想构建环境，本项目也提供打包好的exe文件供你直接运行，位于/dist/ui.exe
+
+# 运行方法
+- 运行“可执行文件/ui.exe”
+- 运行“代码/ui.py”,main()位于ui.py中
+
+
+# 迷宫问题的相关事项
+>1.地块类型说明：
+- -1表示用户自定义入口
+- 0表示墙
+- 1表示通路
+- 2表示障碍，其通行时间是普通道路的3倍
+- 3表示火，它有运动周期，在其周期内有一半时间可通行，一半时间不可通行
+- 4表示用户自定义出口
+## 基本代码
+- maze.py: 迷宫类的实现，迷宫信息用一个二维数组表示，数组中的每个数代表一个方格，数字值代表方格类型
 - git.py: 监督学习用到的批量式学习仓库。
 - maze_map.py: 存储6个事先定义好的迷宫
 - draw.py: Q表的可视化以及完整走迷宫过程的呈现。
-
+## 核心代码
+- BFS.py：BFS算法的具体实现，已解耦
+- Dijkstra.py :dijkstra算法的具体实现，已解耦
+- train_qtable.py: Q_learning算法的实现。用于训练智能体决策。包括Q表类的实现，Q表类有Q值的存储，决策的进行，Q表的学习等功能函数，进行预测和学习时会与迷宫（“环境”）进行交互，对其输入动作，得到反馈。
 ## UI代码
 - ui.py: 顶层窗口，有两个标签页
 - ui_basic.py: “已有迷宫”标签页的实现，用户可以从我们定义好的几个迷宫中选择一个，进行训练并查看完整的走迷宫过程。
 - ui_userDefine.py：“用户自定义”标签页的实现，用户可以输入任意大小的迷宫，自定义火焰周期，训练次数上限。之后进行训练，并以三种不同的速度查看完整的走迷宫结果。
 - draw_ui.py: 在ui界面绘制Q表和走迷宫过程。
 
-## 运行方法
-- 打开“可执行文件/ui.exe”
-- 运行“代码/ui.py”
-- 运行“代码/train_qtable.py”，对maze_map中定义的迷宫进行训练，训练结束后显示Q表和完整走迷宫过程。
 
-## 编译运行环境
-python 3.6, pyqt 5.13.1, matplotlib 3.0.2, numpy 1.15.2, Pyinstaller 3.5
 
-## Reference
-https://zhuanlan.zhihu.com/p/39617577
-https://github.com/erikdelange/Reinforcement-Learning-Maze
+
+
